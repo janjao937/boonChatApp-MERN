@@ -2,8 +2,12 @@ import User from "../model/user.model.js";
 import bcrypt from "bcryptjs";
 import generateTokenAndSetCookie from "../utils/generateJWToken.js";
 
-
+const getRandomNumber = (min, max) => {
+    return Math.ceil((Math.random() * (max - min) + min));
+}
 export const signup = async(req,res)=>{
+   
+
     try{
         const {fullname,username,password,confirmPassword,gender} = req.body;
 
@@ -23,8 +27,13 @@ export const signup = async(req,res)=>{
         const hashPassword = await bcrypt.hash(password,salt);
 
         //randomPic api | https://avatar-placeholder.iran.liara.run/
-        const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${username}`;
-        const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`;
+        // const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${username}`;
+        // const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`;
+        const randomBodyStyle = getRandomNumber(10,25);
+        const randomEyeStyle = getRandomNumber(1,5);
+
+        const  girlProfilePic= `https://api.dicebear.com/8.x/notionists/svg?hair=hat,variant39&eyes=variant0${randomEyeStyle}&body=variant${randomBodyStyle}`;
+        const  boyProfilePic = `https://api.dicebear.com/8.x/notionists/svg?hair=hat,variant01&eyes=variant0${randomEyeStyle}&body=variant${randomBodyStyle}`;
         
         const newUser = await User({
             fullname:fullname,
