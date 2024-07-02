@@ -15,7 +15,7 @@ dotenv.config();
 
 const PORT = process.env.PORT||5000;
 
-const __dirname = path.resolve();
+const __dirname = path.resolve();//https://www.geeksforgeeks.org/node-js-path-resolve-method/
 
 app.use(express.json());//json payload from req.body
 app.use(cookieParser());//parse data in cookie from req
