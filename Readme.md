@@ -1,7 +1,7 @@
 # ENV Variable
-PORT=
-MONGO_DB_URL = 
-JWT_SECRET=
+* PORT=
+* MONGO_DB_URL = 
+* JWT_SECRET=
 
 # DEV
 **dev backend:** npm run server<br/>
