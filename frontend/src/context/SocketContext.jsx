@@ -15,7 +15,7 @@ export const SocketContextProvider =({children})=>{
 
     useEffect(()=>{
         if(authUser){
-            const connectSocket = io("http://localhost:8000",{
+            const connectSocket = io("https://boon-chatapp.onrender.com/",{
                 query:{
                     userId:authUser.id,
                 }
